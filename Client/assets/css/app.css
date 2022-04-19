@@ -1,0 +1,103 @@
+* {
+  box-sizing: border-box;
+}
+.flex-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.flex-container > * {
+  flex: 1 100%;
+}
+
+.topnav {
+  display: flex;
+  overflow: hidden;
+  height: fit-content;
+  background-color: rgb(169, 189, 231);
+}
+.logo {
+  display: flex;
+  margin-right: auto;
+}
+.login-container {
+  display: flex;
+  float: right;
+}
+
+.logo > img {
+  float: left;
+  width: 100px;
+  margin-top: 10px;
+  margin-left: 10px;
+  margin-right: 500px;
+  margin-bottom: 25px;
+}
+
+.left {
+  display: flex;
+  float: right;
+}
+
+.topnav input[type="text"] {
+  padding: 6px;
+  margin-top: 15px;
+  margin-right: 16px;
+  font-size: 17px;
+  border: rgb;
+  /* width: 200px; */
+}
+span {
+  font-weight: bold;
+  font-size: larger;
+}
+.btn {
+  background-color: rgb(169, 189, 231);
+}
+.topnav .login-container button {
+  float: right;
+  padding: 10px;
+  margin-top: 20px;
+  margin-right: 16px;
+  margin-bottom: 20px;
+  background: rgb(241, 237, 245);
+  font-size: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+.body-container {
+  display: flex;
+  flex-direction: column;
+}
+caption {
+  font-family: "Courier New", Courier, monospace;
+  font-weight: bold;
+  font-size: larger;
+  margin-top: 20px;
+  margin-left: 10px;
+  height: 50px;
+  text-align: left;
+  text-transform: uppercase;
+}
+table {
+  padding: 10px 10px 10px 10px;
+  margin: 10px 10px 10px 10px;
+  width: 100%;
+  border-collapse: collapse;
+  font-family: "Courier New", Courier, monospace;
+}
+thead {
+  background-color: gray;
+}
+
+td,
+th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 10px;
+}
+
+tr:nth-child(even) {
+  background-color: rgb(214, 189, 189);
+}

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./assets/css/app.css" type="text/css" />
+    <script
+      src="https://kit.fontawesome.com/f5bd7241bb.js"
+      crossorigin="anonymous"
+    ></script>
+    <title>Wlcome</title>
+  </head>
+  <body>
+    <div class="flex-container">
+      <div class="topnav">
+        <div class="logo">
+          <img src="../Client/assets/images/logo.png" alt="Logo" />
+        </div>
+        
+        <div class="left">
+          <form action="/">
+            <span>Search:</span>
+            <input type="text" placeholder="Search..." name="search" />
+            <button type="submit" class="btn">
+              <i class="fa fa-search fa-2x"></i>
+            </button>
+            <form action="/">
+              <button class="btn" aria-hidden="true">
+                <i class="fa fa-sign-out fa-2x"></i>SIGN OUT</i> 
+              </button>
+            </form>
+          </form>
+        </div>
+        
+      </div>
+      <div class="body-container">
+        <div class="recommendated-list">
+          <table>
+            <caption>
+              Song You may interested
+            </caption>
+            <thead class="thead">
+              <tr>
+                <th>ID</th>
+                <th>Title</th>
+                <th>Release Date</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="table-body">
+              <tr>
+                <th>001</th>
+                <th>Love the Way You Lie</th>
+                <th>2002</th>
+                <th><i class="fa fa-plus"></i></th>
+              </tr>
+
+              <tr>
+                <th>002</th>
+                <th>Love the Way You Lie part 2</th>
+                <th>2002</th>
+                <th><i class="fa fa-plus"></i></th>
+              </tr>
+
+              <tr>
+                <th>003</th>
+                <th>Love the Way You Lie</th>
+                <th>2002</th>
+                <th><i class="fa fa-plus"></i></th>
+              </tr>
+
+              <tr>
+                <th>004</th>
+                <th>Love the Way You Lie</th>
+                <th>2002</th>
+                <th><i class="fa fa-plus"></i></th>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="playlist-container">
+          <table>
+            <caption>
+              Your PlayList
+            </caption>
+            <thead>
+              <tr>
+                <th>Index</th>
+                <th>Title</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="table-body">
+              <tr>
+                <th>001</th>
+                <th>Highway, on the way</th>
+
+                <th><i class="fa-solid fa-minus"></i></th>
+              </tr>
+
+              <tr>
+                <th>001</th>
+                <th>Highway, on the way</th>
+
+                <th><i class="fa-solid fa-minus"></i></th>
+              </tr>
+
+              <tr>
+                <th>001</th>
+                <th>Highway, on the way</th>
+                <th><i class="fa-solid fa-minus"></i></th>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="playing-music">
+          </audio>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
