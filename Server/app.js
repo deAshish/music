@@ -9,7 +9,6 @@ app.use(cors());
 app.use(express.json());
 
 app.listen(3000, () => console.log("listening to 3000..."));
-
 app.use("/users", userRouter);
 app.use("/musics", musicRouter);
 

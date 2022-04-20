@@ -127,6 +127,7 @@ module.exports = class User {
   }
   static dequeueSong(sessionId, songId) {
     const user = users.find((user) => user.sessionId == sessionId);
+    console.log(user);
     if (user == null || user == undefined) {
       throw new Error("User not found.");
     } else {

@@ -4,10 +4,8 @@ init();
 
 function init() {
   sessionId = sessionStorage.getItem("sessionId");
-  alert(sessionId);
 
   if (sessionId != 0 && sessionId != null) {
-    // alert("message1");
     document.getElementById("login-panel").style.display = "none";
     document.getElementById("logout-panel").style.display = "inline";
     document.getElementById("welcome").style.display = "none";
@@ -15,7 +13,6 @@ function init() {
     fetchSongs();
     fetchByLoginId();
   } else {
-    // alert("message");
     document.getElementById("login-panel").style.display = "flex";
     document.getElementById("logout-panel").style.display = "none";
     document.getElementById("welcome").style.display = "flex";
@@ -112,7 +109,7 @@ const dataInPlayList = (data) => {
       htmlString += `<td>${x.releaseDate}</td>`;
       htmlString += `<td style="text-align:center;"><span>
                        <i tag="${x.songId}" class="fa fa-minus dequeue"></i>
-                       <i tag="${x.songId}" class="fa fa-play playSong"></i>
+                      <i tag="${x.songId}" class="fa fa-play playSong"></i>
                        </span></td>`;
       htmlString += "</tr>";
     });
@@ -190,7 +187,6 @@ const playFromHere = (songId) => {
   startPlayingFromHere(songId);
 };
 
-//function to dequeue the songs
 const dequeue = function (songId) {
   fetch("http://localhost:3000/users/dequeueSong", {
     method: "POST",
@@ -199,11 +195,12 @@ const dequeue = function (songId) {
       songId: parseInt(songId),
     }),
     headers: {
-      "Content-Type": "application/json, charset=UTF-8",
+      "Content-Type": "application/json; charset=UTF-8",
     },
   })
     .then((res) => res.json())
     .then((res) => {
+      console.log(res);
       dataInPlayList(res);
       refreshPlayListSong();
     });
