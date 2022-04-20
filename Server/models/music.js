@@ -9,7 +9,7 @@ let musics = [
       firstName: "Sushant",
       lastName: "KC",
     },
-    releaseDate: new Date(2019, 1, 31),
+    releaseDate: "2019-01-31",
   },
 
   {
@@ -22,7 +22,55 @@ let musics = [
       firstName: "Sushant",
       lastName: "KC",
     },
-    releaseDate: new Date(2022, 3, 21),
+    releaseDate: "2019-01-31",
+  },
+  {
+    songId: 3,
+    title: "Risaune Bhaya",
+    url: "https://www.youtube.com/watch?v=UkK5ofiKxgg",
+    genre: "Country",
+    artist: {
+      artistId: 1,
+      firstName: "Sushant",
+      lastName: "KC",
+    },
+    releaseDate: "2019-01-31",
+  },
+  {
+    songId: 4,
+    title: "Risaune Bhaya",
+    url: "https://www.youtube.com/watch?v=UkK5ofiKxgg",
+    genre: "Country",
+    artist: {
+      artistId: 1,
+      firstName: "Sushant",
+      lastName: "KC",
+    },
+    releaseDate: "2019-01-31",
+  },
+  {
+    songId: 5,
+    title: "Risaune Bhaya",
+    url: "https://www.youtube.com/watch?v=UkK5ofiKxgg",
+    genre: "Country",
+    artist: {
+      artistId: 1,
+      firstName: "Sushant",
+      lastName: "KC",
+    },
+    releaseDate: "2019-01-31",
+  },
+  {
+    songId: 6,
+    title: "Risaune Bhaya",
+    url: "https://www.youtube.com/watch?v=UkK5ofiKxgg",
+    genre: "Country",
+    artist: {
+      artistId: 1,
+      firstName: "Sushant",
+      lastName: "KC",
+    },
+    releaseDate: "2019-01-31",
   },
 ];
 
@@ -60,6 +108,12 @@ module.exports = class Music {
 
   static gets() {
     return musics;
+  }
+
+  static search(title) {
+    return musics.filter((x) =>
+      x.title.toUpperCase().includes(title.toUpperCase())
+    );
   }
 
   static findMusicById(songId) {

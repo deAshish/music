@@ -1,4 +1,3 @@
-// const express = require("express");
 const User = require("../models/user");
 
 exports.gets = (req, res, next) => {
@@ -9,24 +8,15 @@ exports.getById = (req, res, next) => {
   res.status(200).json(User.getById(req.params.userId));
 };
 
+exports.getSongs = (req, res, next) => {
+  res.status(200).json(User.getSongs(req.params.sessionId));
+};
+
 exports.getAuthenticatedUser = (req, res, next) => {
   return res
     .status(200)
     .json(User.getAuthenticatedUser(req.body.userName, req.body.password));
 };
-
-// exports.createUser = (req, res, next) => {
-//   const user = new User(
-//     req.body.userId == 0 ? User.getKey() : req.body.userId,
-//     "",
-//     req.body.firstName,
-//     req.body.lastName,
-//     req.body.userName,
-//     req.body.password
-//   );
-//   user.save();
-//   return res.status(200).json(user);
-// };
 
 exports.updateUser = (req, res, next) => {
   const user = new User(

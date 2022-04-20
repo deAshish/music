@@ -1,3 +1,4 @@
+const Music = require("./music");
 let users = [
   {
     userId: 1,
@@ -6,7 +7,16 @@ let users = [
     lastName: "Ghimire",
     userName: "deAshish",
     password: "12345",
-    userSong: [{ songId: 1 }, { songId: 2 }],
+    userSong: [],
+  },
+  {
+    userId: 2,
+    sessionId: "",
+    firstName: "Sachin",
+    lastName: "Tandan",
+    userName: "sachin",
+    password: "12345",
+    userSong: [],
   },
 ];
 let counter = users[users.length - 1].userId;
@@ -62,6 +72,7 @@ module.exports = class User {
       throw new Error("Record not found.");
     }
   }
+
   static getBySessionId(sessionId) {
     return users.find((user) => user.sessionId == sessionId);
   }
@@ -91,6 +102,15 @@ module.exports = class User {
     }
   }
 
+  static getSongs(sessionId) {
+    const user = users.find((user) => user.sessionId == sessionId);
+
+    if (user != undefined) {
+      const songs = user.userSong.map((x) => x.songId);
+      return Music.gets().filter((x) => songs.includes(x.songId));
+    }
+  }
+
   static enqueueSong(sessionId, songId) {
     const user = users.find((user) => user.sessionId == sessionId);
 
@@ -98,11 +118,11 @@ module.exports = class User {
       throw new Error("User not found!");
     } else {
       const song = user.userSong.find((s) => s.songId == songId);
-      console.log(song);
       if (song == null || song == undefined) {
         user.userSong.push({ songId: songId });
       }
-      return user;
+      let songsList = user.userSong.map((x) => x.songId);
+      return Music.gets().filter((x) => songsList.includes(x.songId));
     }
   }
   static dequeueSong(sessionId, songId) {
@@ -110,8 +130,9 @@ module.exports = class User {
     if (user == null || user == undefined) {
       throw new Error("User not found.");
     } else {
-      user.songs = user.userSong.filter((s) => s.songId != songId);
-      return user;
+      user.userSong = user.userSong.filter((s) => s.songId != songId);
+      let songsList = user.userSong.map((x) => x.songId);
+      return Music.gets().filter((x) => songsList.includes(x.songId));
     }
   }
 };
