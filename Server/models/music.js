@@ -1,8 +1,8 @@
 let musics = [
   {
     songId: 1,
-    title: "Sathi",
-    url: "https://www.youtube.com/watch?v=7aoDZ8UeUxU",
+    title: "Formula Fantasy",
+    url: "https://ia800905.us.archive.org/19/items/FREE_background_music_dhalius/FormulaFantasy.mp3",
     genre: "Country",
     artist: {
       artistId: 1,
@@ -14,8 +14,8 @@ let musics = [
 
   {
     songId: 2,
-    title: "Risaune Bhaya",
-    url: "https://www.youtube.com/watch?v=UkK5ofiKxgg",
+    title: "La Re Compensa",
+    url: "https://ia800905.us.archive.org/19/items/FREE_background_music_dhalius/LaRecompensa.mp3",
     genre: "Country",
     artist: {
       artistId: 1,
@@ -26,8 +26,8 @@ let musics = [
   },
   {
     songId: 3,
-    title: "Risaune Bhaya",
-    url: "https://www.youtube.com/watch?v=UkK5ofiKxgg",
+    title: "Guilt",
+    url: "https://ia800905.us.archive.org/19/items/FREE_background_music_dhalius/Guilt.mp3",
     genre: "Country",
     artist: {
       artistId: 1,
@@ -38,8 +38,8 @@ let musics = [
   },
   {
     songId: 4,
-    title: "Risaune Bhaya",
-    url: "https://www.youtube.com/watch?v=UkK5ofiKxgg",
+    title: "Hangout",
+    url: "https://ia800905.us.archive.org/19/items/FREE_background_music_dhalius/Hangout.mp3",
     genre: "Country",
     artist: {
       artistId: 1,
@@ -50,8 +50,8 @@ let musics = [
   },
   {
     songId: 5,
-    title: "Risaune Bhaya",
-    url: "https://www.youtube.com/watch?v=UkK5ofiKxgg",
+    title: "Director",
+    url: "https://ia800905.us.archive.org/19/items/FREE_background_music_dhalius/Director.mp3",
     genre: "Country",
     artist: {
       artistId: 1,
@@ -62,8 +62,8 @@ let musics = [
   },
   {
     songId: 6,
-    title: "Risaune Bhaya",
-    url: "https://www.youtube.com/watch?v=UkK5ofiKxgg",
+    title: "MOMENTITO",
+    url: "https://ia800905.us.archive.org/19/items/FREE_background_music_dhalius/MOMENTITO.mp3",
     genre: "Country",
     artist: {
       artistId: 1,
@@ -124,6 +124,13 @@ module.exports = class Music {
       throw new Error("Not Found");
     }
   }
+
+  // static songByUser(sessionId) {
+  //   const songs = User.getBySessionId(sessionId).playSong.map((x) => x.songId);
+  //   console.log(songs);
+  //   return musics.filter((x) => songs.includes(x.songId));
+  // }
+
   static remove(songId) {
     const index = musics.findIndex((music) => music.songId == songId);
     if (index >= 0) {

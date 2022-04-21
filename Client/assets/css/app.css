@@ -39,7 +39,8 @@
   float: right;
 }
 
-.topnav input[type="text"] {
+.topnav input[type="text"],
+input[type="password"] {
   padding: 6px;
   margin-top: 15px;
   margin-right: 16px;

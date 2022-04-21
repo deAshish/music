@@ -7,7 +7,7 @@ let users = [
     lastName: "Ghimire",
     userName: "deAshish",
     password: "12345",
-    userSong: [],
+    userSong: [{ songId: 1 }, { songId: 2 }],
   },
   {
     userId: 2,
@@ -15,8 +15,8 @@ let users = [
     firstName: "Sachin",
     lastName: "Tandan",
     userName: "sachin",
-    password: "12345",
-    userSong: [],
+    password: "123456",
+    userSong: [{ songId: 3 }],
   },
 ];
 let counter = users[users.length - 1].userId;
@@ -42,7 +42,7 @@ module.exports = class User {
   }
 
   update() {
-    const index = users.findIndex((user) => user.id == this.id);
+    const index = users.findIndex((user) => user.userId == this.id);
     if (index > -1) {
       users.splice(index, 1, this);
       return this;
@@ -78,6 +78,7 @@ module.exports = class User {
   }
 
   static getAuthenticatedUser(userName, password) {
+    // console.log(users);
     const index = users.findIndex(
       (user) =>
         user.userName.toLowerCase() == userName.toLowerCase() &&
@@ -93,12 +94,12 @@ module.exports = class User {
 
       const sessionId = user.lastName + "-" + Math.floor(Math.random() * 1000);
 
-      const index = users.findIndex((user) => user.userId == user.userId);
+      const index = users.findIndex((x) => x.userId == user.userId);
       user.sessionId = sessionId;
       users.splice(index, 1, user);
       return { sessionNumber: sessionId };
     } else {
-      throw new Error("Failed to login.");
+      return { sessionNumber: "Failed to login." };
     }
   }
 
@@ -127,7 +128,7 @@ module.exports = class User {
   }
   static dequeueSong(sessionId, songId) {
     const user = users.find((user) => user.sessionId == sessionId);
-    console.log(user);
+    // console.log(user);
     if (user == null || user == undefined) {
       throw new Error("User not found.");
     } else {

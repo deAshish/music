@@ -42,7 +42,6 @@ exports.enqueueSong = (req, res, next) => {
     .json(User.enqueueSong(req.body.sessionId, req.body.songId));
 };
 exports.dequeueSong = (req, res, next) => {
-  console.log(req.body.sessionId + ": " + req.body.songId);
   return res
     .status(200)
     .json(User.dequeueSong(req.body.sessionId, req.body.songId));

@@ -22,7 +22,7 @@ function init() {
 
 document.getElementById("logout").addEventListener("click", (event) => {
   sessionStorage.removeItem("sessionId");
-  // stopPlayback();
+  stopPlayback();
   init();
 });
 
@@ -42,10 +42,9 @@ document.getElementById("login").addEventListener("submit", (event) => {
   })
     .then((res) => res.json())
     .then((res) => {
-      if (res.Error == "Failed to authenticate") {
-        alert(res.Error);
+      if (res.sessionNumber == "Failed to login.") {
+        alert(res.sessionNumber);
       } else {
-        // alert("login Successful");
         sessionId = res.sessionNumber;
         sessionStorage.setItem("sessionId", sessionId);
         init();
@@ -165,20 +164,24 @@ const enqueue = function (songId) {
     .then((res) => res.json())
     .then((res) => {
       console.log(res);
+      loadSongsInPlayer(res);
       dataInPlayList(res);
       refreshPlayListSong();
+      refreshPlayListForPlayerEvent();
     });
 };
 
 function fetchByLoginId() {
   fetch(
-    "http://localhost:3000/musics/songByUser/" +
+    "http://localhost:3000/users/getSongs/" +
       sessionStorage.getItem("sessionId")
   )
     .then((res) => res.json())
     .then((res) => {
+      loadSongsInPlayer(res);
       dataInPlayList(res);
       refreshPlayListSong();
+      refreshPlayListForPlayerEvent();
     });
 }
 
@@ -187,6 +190,7 @@ const playFromHere = (songId) => {
   startPlayingFromHere(songId);
 };
 
+//function to deque the songs
 const dequeue = function (songId) {
   fetch("http://localhost:3000/users/dequeueSong", {
     method: "POST",
@@ -200,8 +204,18 @@ const dequeue = function (songId) {
   })
     .then((res) => res.json())
     .then((res) => {
-      console.log(res);
+      removeFromCurrentPlayer(songId);
       dataInPlayList(res);
       refreshPlayListSong();
+      refreshPlayListForPlayerEvent();
     });
 };
+
+function refreshPlayListForPlayerEvent() {
+  let btns = document.getElementsByClassName("playSong");
+  Array.prototype.forEach.call(btns, function addClickListener(btn) {
+    btn.addEventListener("click", function (event) {
+      playFromHere(this.getAttribute("tag"));
+    });
+  });
+}

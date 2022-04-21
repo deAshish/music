@@ -5,6 +5,7 @@ exports.gets = (req, res, next) => {
 };
 
 exports.search = (req, res, next) => {
+  // console.log(req.params.sessionId);
   return res.status(200).json(Music.search(req.query.title));
 };
 
